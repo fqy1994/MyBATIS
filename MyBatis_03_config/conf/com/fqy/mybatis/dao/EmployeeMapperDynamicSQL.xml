@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fqy.mybatis.dao.EmployeeMapperDynamicSQL">
+    <select id="getEmpsByConditionIf" resultType="com.fqy.mybatis.bean.Employee">
+        select * from tbl_employee
+        where
+        <if test="id!=null">
+            id=#{id}
+        </if>
+<if test="lastName!=null and lastName!=">
+    and last_name like #{lastName}
+</if>
+
+and email=#{email} and gender=#{gender}
+
+    </select>
+</mapper>
